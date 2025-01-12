@@ -146,8 +146,8 @@ export const liftService: ILiftService = {
       if (a.weight > b.weight) return 1
       if (a.weight < b.weight) return -1
 
-      if (a._id.toString() > b._id.toString()) return -1
-      if (a._id.toString() < b._id.toString()) return 1
+      if (a._id.toString() < b._id.toString()) return -1
+      if (a._id.toString() > b._id.toString()) return 1
 
       return 0
     })
