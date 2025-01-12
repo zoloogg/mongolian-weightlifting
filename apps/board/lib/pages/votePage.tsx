@@ -25,20 +25,28 @@ export const VotePage: FC = () => {
   const handleVote = (myVote: boolean) => {
     if (idx === null) return
 
-    vote('TBA', parseInt(idx), myVote).then((res) => {
-      console.log(res)
-    })
-
     if (god === 'true') {
       vote('TBA', 0, myVote).then((res) => {
         console.log(res)
+      }).then(() => {
+        setTimeout(() => {
+          vote('TBA', 1, myVote).then((res) => {
+            console.log(res)
+          }).then(() => {
+            setTimeout(() => {
+              vote('TBA', 2, myVote).then((res) => {
+                console.log(res)
+              })
+            }, 1000)
+          })
+        }, 1000)
       })
-      vote('TBA', 1, myVote).then((res) => {
-        console.log(res)
-      })
-      vote('TBA', 2, myVote).then((res) => {
-        console.log(res)
-      })
+    } else {
+      setTimeout(() => {
+        vote('TBA', parseInt(idx), myVote).then((res) => {
+          console.log(res)
+        })
+      }, 1000)
     }
   }
 

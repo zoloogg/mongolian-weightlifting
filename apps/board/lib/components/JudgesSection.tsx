@@ -16,14 +16,14 @@ export const JudgesSection: FC = () => {
     })
   }, [])
 
-  setInterval(() => {
-    getLiveLift().then((lift) => {
-      setLift(lift)
-    })
-    getLastResult().then((last) => {
-      setLast(last)
-    })
-  }, 1000)
+  // setInterval(() => {
+  //   getLiveLift().then((lift) => {
+  //     setLift(lift)
+  //   })
+  //   getLastResult().then((last) => {
+  //     setLast(last)
+  //   })
+  // }, 10000)
 
   const Circ = ({ key, color }: { key: number, color: string }) => {
     return (
