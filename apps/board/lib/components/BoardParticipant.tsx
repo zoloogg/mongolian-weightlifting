@@ -104,6 +104,7 @@ export const BoardParticipant: FC<Props> = ({ idx, participation, allLifts, allC
       <td className="text-center"></td>
 
       <td className="text-center">
+        {participation.snatch !== undefined && participation.cleanAndJerk !== undefined ? participation.snatch + participation.cleanAndJerk : ''}
       </td>
       <td></td>
     </tr>
