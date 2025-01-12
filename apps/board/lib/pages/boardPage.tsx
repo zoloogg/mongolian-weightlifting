@@ -3,6 +3,7 @@ import { getClubs, getLiveCategories } from "@/services/apiService"
 import { Category, Club } from "@/types"
 import { FC, Suspense, useEffect, useState } from "react"
 import { LiveCategory } from "../components/LiveCategory"
+import { JudgesSection } from "../components/JudgesSection"
 
 export const BoardPage: FC = () => {
   const [categories, setCategories] = useState<Category[]>([])
@@ -28,6 +29,10 @@ export const BoardPage: FC = () => {
           {categories.map((category) => (
             <LiveCategory key={category._id} clubs={clubs} category={category} />
           ))}
+        </div>
+        <div className="flex items-center justify-center mt-4">
+          <JudgesSection />
+
         </div>
       </div>
     </Suspense>

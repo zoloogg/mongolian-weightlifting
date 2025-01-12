@@ -99,6 +99,11 @@ const getLiveLift = async (): Promise<Lift> => {
 
   return res.data[0]
 }
+const getLastResult = async (): Promise<Lift['results']> => {
+  const res = await sendGet<Lift['results']>(`/v1/lifts/last`, {})
+
+  return res.data
+}
 
 const updateLift = async (liftId: string, params: any): Promise<Lift> => {
   const res = await sendPatch(`/v1/lifts/${liftId}`, params)
@@ -147,4 +152,5 @@ export {
   createLift,
   getLiveLift,
   vote,
+  getLastResult,
 }

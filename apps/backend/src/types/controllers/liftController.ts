@@ -8,4 +8,5 @@ export interface ILiftController {
   getRank: (req: Request, res: Response) => Promise<void>
   vote: (req: Request, res: Response) => Promise<void>
   fixLive: (req: Request, res: Response) => Promise<void>
+  last: (req: Request, res: Response) => Promise<void>
 }

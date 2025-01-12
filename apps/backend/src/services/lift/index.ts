@@ -4,6 +4,9 @@ import { transformQuery } from './utils'
 import { participationService } from '../participation'
 import { ILift } from '../../types/models'
 import { categoryService } from '../category'
+
+let lll: ILift['results'] = [null, null, null]
+
 export const liftService: ILiftService = {
   getLift: async (query) => {
     return Lift.findOne(transformQuery(query))
@@ -79,6 +82,9 @@ export const liftService: ILiftService = {
   },
   handleFinishedLift: async (lift) => {
     console.log('Handling', lift.idx)
+
+    lll = lift.results
+
     if ([1, 2, 4, 5].includes(lift.idx)) {
       const nextLift =
         lift.verdict === 'success' ? lift.weight + 1 : lift.weight
@@ -178,5 +184,8 @@ export const liftService: ILiftService = {
     )
 
     return true
+  },
+  getLast: async () => {
+    return lll
   },
 }

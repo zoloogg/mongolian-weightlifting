@@ -51,4 +51,8 @@ export const liftController: ILiftController = {
     const live = await liftService.handleLive()
     res.json(live)
   },
+  last: async (req, res) => {
+    const last = await liftService.getLast()
+    res.json(last)
+  },
 }

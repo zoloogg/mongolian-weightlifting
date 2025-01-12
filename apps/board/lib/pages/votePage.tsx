@@ -8,6 +8,7 @@ import { FC, useEffect, useState } from "react"
 export const VotePage: FC = () => {
   const searchParams = useSearchParams()
   const idx = searchParams.get('idx')
+  const god = searchParams.get('god')
 
   // const [lift, setLift] = useState<Lift | null>(null)
 
@@ -27,6 +28,18 @@ export const VotePage: FC = () => {
     vote('TBA', parseInt(idx), myVote).then((res) => {
       console.log(res)
     })
+
+    if (god === 'true') {
+      vote('TBA', 0, myVote).then((res) => {
+        console.log(res)
+      })
+      vote('TBA', 1, myVote).then((res) => {
+        console.log(res)
+      })
+      vote('TBA', 2, myVote).then((res) => {
+        console.log(res)
+      })
+    }
   }
 
   return (

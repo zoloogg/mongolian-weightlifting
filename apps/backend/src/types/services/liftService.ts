@@ -14,4 +14,5 @@ export interface ILiftService {
   ) => Promise<boolean>
   handleFinishedLift: (lift: ILift) => Promise<boolean>
   handleLive: () => Promise<boolean>
+  getLast: () => Promise<ILift['results']>
 }
