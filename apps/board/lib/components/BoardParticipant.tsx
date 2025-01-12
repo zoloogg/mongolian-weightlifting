@@ -7,13 +7,27 @@ import { getAthlete, getClub, getLifts } from "@/services/apiService";
 interface Props {
   idx: number
   participation: Participation
+  allLifts?: Lift[]
+  allClubs?: Club[]
 }
 
-export const BoardParticipant: FC<Props> = ({ idx, participation }) => {
+export const BoardParticipant: FC<Props> = ({ idx, participation, allLifts, allClubs }) => {
   const [athlete, setAthlete] = useState<Athlete | null>(null)
   const [club, setClub] = useState<Club | null>(null)
   const [dob, setDob] = useState<string | null>(null)
   const [lifts, setLifts] = useState<Lift[]>([])
+
+  const getLifts2 = async () => {
+    console.log("A", allLifts)
+    const l = allLifts?.filter((lift) => lift.participation === participation._id) ?? []
+    console.log(l)
+    return l
+  }
+
+  const getClub2 = async (clubId: string) => {
+    const c = allClubs?.find((club) => club._id === clubId) ?? null
+    return c
+  }
 
   useEffect(() => {
     getAthlete(participation.athlete).then((athlete) => {
@@ -26,11 +40,11 @@ export const BoardParticipant: FC<Props> = ({ idx, participation }) => {
         setDob(d.toISOString().split('T')[0])
       }
 
-      getClub(athlete.club).then((club) => {
+      getClub2(athlete.club).then((club) => {
         setClub(club)
       })
 
-      getLifts(participation._id).then((lifts) => {
+      getLifts2().then((lifts) => {
         if (lifts.length < 6) {
           const missing = 6 - lifts.length
           for (let i = 0; i < missing; i++) {

@@ -1,6 +1,7 @@
 import axios, { AxiosResponse } from 'axios'
 
-const { API_BASE_URL = 'http://localhost:4000' } = process.env
+const { NEXT_PUBLIC_API_BASE_URL: API_BASE_URL = 'http://localhost:4000' } =
+  process.env
 
 console.log('ENV', process.env)
 

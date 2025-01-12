@@ -3,6 +3,12 @@ import { Category } from '../types/category'
 import { Participation } from '../types/participation'
 import { sendGet, sendPatch, sendPost } from './utils'
 
+const getClubs = async (params: any): Promise<Club[]> => {
+  const res = await sendGet<Club[]>('/v1/clubs', params)
+
+  return res.data
+}
+
 const getClub = async (clubId: string): Promise<Club> => {
   const res = await sendGet<Club>(`/v1/clubs/${clubId}`, {})
 
@@ -71,6 +77,13 @@ const getLiveParticipants = async (
   return res.data
 }
 
+const getLiftsQuery = async (params: any): Promise<Lift[]> => {
+  console.log('D', params)
+  const res = await sendGet<Lift[]>(`/v1/lifts/`, params)
+  console.log('C', res.data)
+  return res.data
+}
+
 const getLifts = async (participationId: string): Promise<Lift[]> => {
   const res = await sendGet<Lift[]>(`/v1/lifts/`, {
     participation: participationId,
@@ -119,7 +132,9 @@ const vote = async (
 }
 
 export {
+  getLiftsQuery,
   getClub,
+  getClubs,
   getAthletes,
   getAthlete,
   getCategories,
