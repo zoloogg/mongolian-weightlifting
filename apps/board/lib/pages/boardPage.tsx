@@ -14,7 +14,7 @@ export const BoardPage: FC = () => {
 
   setTimeout(function () {
     window.location.reload();
-  }, 5000);
+  }, 10000);
 
   return (
     <div className="flex flex-col justify-top items-start h-screen w-screen p-4">
