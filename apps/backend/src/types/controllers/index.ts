@@ -1,0 +1,7 @@
+export * from './clubController'
+export * from './athleteController'
+export * from './competitionController'
+export * from './participationController'
+export * from './liftController'
+export * from './boardController'
+export * from './clockController'

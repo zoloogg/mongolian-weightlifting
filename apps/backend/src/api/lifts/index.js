@@ -1,0 +1,13 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.liftRouter = void 0;
+const express_1 = require("express");
+const controller_1 = require("./controller");
+exports.liftRouter = (0, express_1.Router)();
+exports.liftRouter.get('/', controller_1.liftController.getLifts);
+exports.liftRouter.post('/', controller_1.liftController.createLift);
+exports.liftRouter.delete('/:id', controller_1.liftController.deleteLift);
+exports.liftRouter.patch('/:id', controller_1.liftController.updateLift);
+exports.liftRouter.get('/:id/rank', controller_1.liftController.getRank);
+exports.liftRouter.post('/:id/vote', controller_1.liftController.vote);
+exports.liftRouter.get('/live', controller_1.liftController.fixLive);

@@ -1,0 +1,11 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.athletesRouter = void 0;
+const express_1 = require("express");
+const controller_1 = require("./controller");
+exports.athletesRouter = (0, express_1.Router)();
+exports.athletesRouter.post('/', controller_1.athleteController.createAthlete);
+exports.athletesRouter.get('/', controller_1.athleteController.getAthletes);
+exports.athletesRouter.get('/:id', controller_1.athleteController.getAthlete);
+exports.athletesRouter.patch('/:id', controller_1.athleteController.updateAthlete);
+exports.athletesRouter.delete('/:id', controller_1.athleteController.deleteAthlete);
