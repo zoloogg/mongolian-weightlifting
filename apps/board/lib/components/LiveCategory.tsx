@@ -28,7 +28,7 @@ export const LiveCategory: FC<Props> = ({ category, clubs }) => {
 
   setTimeout(function () {
     setRefresh(refresh + 1)
-  }, 10000);
+  }, 3000);
 
 
   return (

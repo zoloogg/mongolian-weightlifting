@@ -24,6 +24,7 @@ export const liftService: ILiftService = {
   },
   updateLift: async (_id, lift) => {
     const updatedLift = await Lift.findOneAndUpdate({ _id }, { $set: lift })
+    await liftService.handleLive()
     return updatedLift?.isModified() ?? false
   },
   getRank: async (participationId, liftType) => {
