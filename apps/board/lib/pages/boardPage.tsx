@@ -11,6 +11,11 @@ export const BoardPage: FC = () => {
     getLiveCategories().then(setCategories)
   }, [])
 
+
+  setTimeout(function () {
+    window.location.reload();
+  }, 5000);
+
   return (
     <div className="flex flex-col justify-top items-start h-screen w-screen p-4">
       <div className="grid grid-cols-4">
