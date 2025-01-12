@@ -77,7 +77,8 @@ export const liftService: ILiftService = {
   handleFinishedLift: async (lift) => {
     console.log('Handling', lift.idx)
     if ([1, 2, 4, 5].includes(lift.idx)) {
-      const nextLift = lift.verdict ? lift.weight + 1 : lift.weight
+      const nextLift =
+        lift.verdict === 'success' ? lift.weight + 1 : lift.weight
       await Lift.create({
         participation: lift.participation,
         weight: nextLift,
