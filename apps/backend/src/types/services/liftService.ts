@@ -1,6 +1,7 @@
 import { IBaseLift, ILift } from '../models'
 
 export interface ILiftService {
+  getLift: (query: any) => Promise<ILift | null>
   getLifts: (query: any) => Promise<ILift[]>
   createLift: (lift: IBaseLift) => Promise<ILift>
   deleteLift: (id: string) => Promise<boolean>

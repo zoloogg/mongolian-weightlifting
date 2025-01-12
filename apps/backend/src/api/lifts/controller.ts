@@ -36,7 +36,15 @@ export const liftController: ILiftController = {
   vote: async (req, res) => {
     const { id } = req.params
     const { idx, vote } = req.body
-    const voted = await liftService.vote(id, idx, vote)
+
+    const current = await liftService.getLift({ isLive: true })
+
+    if (current === null) {
+      res.status(400).json({ message: 'No live lift found' })
+      return
+    }
+
+    const voted = await liftService.vote(current._id.toString(), idx, vote)
     res.json(voted)
   },
   fixLive: async (req, res) => {

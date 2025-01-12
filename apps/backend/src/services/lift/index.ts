@@ -5,6 +5,9 @@ import { participationService } from '../participation'
 import { ILift } from '../../types/models'
 import { categoryService } from '../category'
 export const liftService: ILiftService = {
+  getLift: async (query) => {
+    return Lift.findOne(transformQuery(query))
+  },
   getLifts: async (query) => {
     return Lift.find(transformQuery(query))
   },

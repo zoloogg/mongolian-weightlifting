@@ -9,33 +9,31 @@ export const VotePage: FC = () => {
   const searchParams = useSearchParams()
   const idx = searchParams.get('idx')
 
-  const [lift, setLift] = useState<Lift | null>(null)
+  // const [lift, setLift] = useState<Lift | null>(null)
 
-  useEffect(() => {
-    getLiveLift().then((lift) => {
-      setLift(lift)
-    })
-  }, [])
+  // useEffect(() => {
+  //   getLiveLift().then((lift) => {
+  //     setLift(lift)
+  //   })
+  // }, [])
 
-  setTimeout(function () {
-    window.location.reload();
-  }, 30000);
+  // setTimeout(function () {
+  //   window.location.reload();
+  // }, 30000);
 
   const handleVote = (myVote: boolean) => {
-    if (!lift || idx === null) return
+    if (idx === null) return
 
-    vote(lift._id, parseInt(idx), myVote).then((res) => {
+    vote('TBA', parseInt(idx), myVote).then((res) => {
       console.log(res)
-
-      alert('Vote sent')
     })
   }
 
   return (
     <div className="flex flex-col items-center justify-center h-screen">
-      <div>
+      {/* <div>
         {JSON.stringify(lift, null, 4)}
-      </div>
+      </div> */}
       <div className="flex md:flex-row flex-col justify-around items-center h-screen">
 
         <button onClick={() => handleVote(true)}><div className='w-64 h-64 bg-white rounded-full'></div></button>
