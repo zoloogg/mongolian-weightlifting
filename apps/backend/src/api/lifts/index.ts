@@ -11,3 +11,4 @@ liftRouter.get('/:id/rank', liftController.getRank)
 liftRouter.post('/:id/vote', liftController.vote)
 
 liftRouter.get('/live', liftController.fixLive)
+liftRouter.get('/last', liftController.last)
