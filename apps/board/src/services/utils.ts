@@ -1,6 +1,6 @@
 import axios, { AxiosResponse } from 'axios'
 
-const { API_BASE_URL = 'http://localhost:4000' } = process.env
+const { API_BASE_URL = 'https://api.trends.mn' } = process.env
 
 console.log('ENV', process.env)
 
