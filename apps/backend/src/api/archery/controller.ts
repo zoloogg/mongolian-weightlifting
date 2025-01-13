@@ -4,6 +4,7 @@ export const archeryController = {
   getMatch: async (req: Request, res: Response) => {
     res.json([
       {
+        category: 'U14 - Эрэгтэйчүүдийн ганцаарчилсан',
         name: 'Б. Балданбаатар',
         arrow1: 10,
         arrow2: 9,
@@ -15,6 +16,7 @@ export const archeryController = {
         set: 1,
       },
       {
+        category: 'U14 - Эрэгтэйчүүдийн ганцаарчилсан',
         name: 'Б. Бадамсэрэжид',
         arrow1: 5,
         arrow2: 6,
@@ -30,6 +32,7 @@ export const archeryController = {
   getBracket: async (req: Request, res: Response) => {
     res.json([
       {
+        category: 'U14 - Эрэгтэйчүүдийн ганцаарчилсан',
         first: 'AAAAAAAAAAAAAAAA',
         second: 'BBBBBBBBBBBBBBBB',
         third: 'CCCCCCCCCCCCCCCC',
@@ -38,6 +41,7 @@ export const archeryController = {
         thirdScore: 80,
       },
       {
+        category: 'U14 - Эрэгтэйчүүдийн ганцаарчилсан',
         first: 'DDDDDDDDDDDDDDDD',
         second: 'EEEEEEEEEEEEEEEE',
         third: 'FFFFFFFFFFFFFFFF',
@@ -46,6 +50,7 @@ export const archeryController = {
         thirdScore: 50,
       },
       {
+        category: 'U14 - Эрэгтэйчүүдийн ганцаарчилсан',
         first: 'GGGGGGGGGGGGGGGG',
         second: 'HHHHHHHHHHHHHHHH',
         third: 'IIIIIIIIIIIIIIII',
@@ -54,6 +59,7 @@ export const archeryController = {
         thirdScore: 20,
       },
       {
+        category: 'U14 - Эрэгтэйчүүдийн ганцаарчилсан',
         first: 'KKKKKKKKKKKKKKKK',
         second: 'LLLLLLLLLLLLLLLL',
         third: 'MMMMMMMMMMMMMMMM',
@@ -62,68 +68,76 @@ export const archeryController = {
         thirdScore: 10,
       },
       {
+        category: 'U14 - Эрэгтэйчүүдийн ганцаарчилсан',
         first: 'NNNNNNNNNNNNNNNN',
         second: 'OOOOOOOOOOOOOOOO',
         third: '',
         firstScore: 20,
         secondScore: 10,
-        thirdScore: 0,
+        thirdScore: '',
       },
       {
+        category: 'U14 - Эрэгтэйчүүдийн ганцаарчилсан',
         first: 'QQQQQQQQQQQQQQQQ',
         second: 'RRRRRRRRRRRRRRRR',
         third: '',
         firstScore: 10,
         secondScore: 0,
-        thirdScore: 0,
+        thirdScore: '',
       },
       {
+        category: 'U14 - Эрэгтэйчүүдийн ганцаарчилсан',
         first: 'TTTTTTTTTTTTTTTT',
         second: 'UUUUUUUUUUUUUUUU',
         third: '',
         firstScore: 100,
         secondScore: 90,
-        thirdScore: 80,
+        thirdScore: '',
       },
       {
+        category: 'U14 - Эрэгтэйчүүдийн ганцаарчилсан',
         first: 'VVVVVVVVVVVVVVVV',
         second: 'WWWWWWWWWWWWWWWW',
         third: '',
         firstScore: 100,
         secondScore: 90,
-        thirdScore: 80,
+        thirdScore: '',
       },
       {
+        category: 'U14 - Эрэгтэйчүүдийн ганцаарчилсан',
         first: 'YYYYYYYYYYYYYYYY',
         second: '',
         third: '',
         firstScore: 100,
-        secondScore: 90,
-        thirdScore: 80,
+        secondScore: '',
+        thirdScore: '',
       },
       {
+        category: 'U14 - Эрэгтэйчүүдийн ганцаарчилсан',
         first: 'ZZZZZZZZZZZZZZZZ',
         second: '',
         third: '',
         firstScore: 100,
-        secondScore: 90,
-        thirdScore: 80,
+        secondScore: '',
+        thirdScore: '',
       },
       {
+        category: 'U14 - Эрэгтэйчүүдийн ганцаарчилсан',
         first: 'XXXXXXXXXXXXXXXX',
         second: '',
         third: '',
         firstScore: 100,
-        secondScore: 90,
-        thirdScore: 80,
+        secondScore: '',
+        thirdScore: '',
       },
       {
+        category: 'U14 - Эрэгтэйчүүдийн ганцаарчилсан',
         first: 'ZZZZZZZZZZZZZZZZ',
         second: '',
         third: '',
         firstScore: 100,
-        secondScore: 90,
-        thirdScore: 80,
+        secondScore: '',
+        thirdScore: '',
       },
     ])
   },
@@ -131,6 +145,7 @@ export const archeryController = {
     res.json([
       {
         name: 'Б. Балданбаатар',
+        category: 'U14 - Эрэгтэйчүүдийн ганцаарчилсан',
         first: 100,
         second: 50,
         total: 150,
@@ -138,6 +153,7 @@ export const archeryController = {
       },
       {
         name: 'BBBBBBBBBBBBBBBB',
+        category: 'U14 - Эрэгтэйчүүдийн ганцаарчилсан',
         first: 99,
         second: 49,
         total: 148,
@@ -145,6 +161,7 @@ export const archeryController = {
       },
       {
         name: 'CCCCCCCCCCCCCCCC',
+        category: 'U14 - Эрэгтэйчүүдийн ганцаарчилсан',
         first: 98,
         second: 48,
         total: 146,
@@ -152,6 +169,7 @@ export const archeryController = {
       },
       {
         name: 'EEEEEEEEEEEEEEEE',
+        category: 'U14 - Эрэгтэйчүүдийн ганцаарчилсан',
         first: 97,
         second: 47,
         total: 144,
@@ -159,6 +177,7 @@ export const archeryController = {
       },
       {
         name: 'FFFFFFFFFFFFFFFF',
+        category: 'U14 - Эрэгтэйчүүдийн ганцаарчилсан',
         first: 96,
         second: 47,
         total: 143,
@@ -166,6 +185,7 @@ export const archeryController = {
       },
       {
         name: 'GGGGGGGGGGGGGGGG',
+        category: 'U14 - Эрэгтэйчүүдийн ганцаарчилсан',
         first: 95,
         second: 46,
         total: 141,
@@ -173,6 +193,7 @@ export const archeryController = {
       },
       {
         name: 'HHHHHHHHHHHHHHHH',
+        category: 'U14 - Эрэгтэйчүүдийн ганцаарчилсан',
         first: 94,
         second: 45,
         total: 139,
@@ -180,6 +201,7 @@ export const archeryController = {
       },
       {
         name: 'IIIIIIIIIIIIIIII',
+        category: 'U14 - Эрэгтэйчүүдийн ганцаарчилсан',
         first: 93,
         second: 44,
         total: 137,
