@@ -108,7 +108,7 @@ export const archeryController = {
   getRanking: async (req: Request, res: Response) => {
     res.json([
       {
-        name: 'Б. Балданбаатар',
+        name: 'Бүдүүн Билгүүдэй',
         category: 'U14 - Эрэгтэйчүүдийн ганцаарчилсан',
         first: 100,
         second: 50,
