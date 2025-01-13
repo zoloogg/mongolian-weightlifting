@@ -6,6 +6,7 @@ import { participationRouter } from './participations'
 import { liftRouter } from './lifts'
 import { boardRouter } from './board'
 import { clockRouter } from './clock'
+import { archeryRouter } from './archery'
 
 export const router = Router()
 
@@ -15,6 +16,7 @@ router.get('/', (_req, res) => {
   })
 })
 
+router.use('/archery', archeryRouter)
 router.use('/clubs', clubRouter)
 router.use('/athletes', athletesRouter)
 router.use('/competitions', competitionRouter)
