@@ -113,7 +113,7 @@ export const BoardParticipant: FC<Props> = ({ idx, participation, allLifts, allC
         lifts.slice(0, 3).map((lift) => <LiftBox lift={lift} />)
       }
       <td className="text-center">
-        {Math.floor(participation.snatch)}
+        {participation.snatch !== null && participation.snatch !== undefined ? Math.floor(participation.snatch) : ''}
       </td>
       <td className="text-center">
         {<Ranking val={snatchesRank ?? 0} />}
@@ -122,13 +122,13 @@ export const BoardParticipant: FC<Props> = ({ idx, participation, allLifts, allC
         lifts.slice(3, 6).map((lift) => <LiftBox lift={lift} />)
       }
       <td className="text-center">
-        {Math.floor(participation.cleanAndJerk)}
+        {participation.cleanAndJerk !== null && participation.cleanAndJerk !== undefined ? Math.floor(participation.cleanAndJerk) : ''}
       </td>
       <td className="text-center">
         {<Ranking val={cleanRank ?? 0} />}
       </td>
       <td className="text-center">
-        {participation.snatch !== undefined && participation.cleanAndJerk !== undefined ? Math.floor(participation.snatch) + Math.floor(participation.cleanAndJerk) : ''}
+        {(participation.snatch !== null && participation.cleanAndJerk !== null && participation.snatch !== undefined && participation.cleanAndJerk !== undefined) ? (Math.floor(participation.snatch) + Math.floor(participation.cleanAndJerk)) : ''}
       </td>
       <td className="text-center">
         {<Ranking val={totalRank ?? 0} />}
