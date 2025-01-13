@@ -75,7 +75,8 @@ export const BoardParticipant: FC<Props> = ({ idx, participation, allLifts, allC
 
     return (
       <td className={className.join(' ')}>
-        {lift.weight !== 0 ? lift.weight : ''}
+        {lift.weight === -1 ? "-" : ''}
+        {(lift.weight !== 0 && lift.weight > 0) ? lift.weight : ''}
       </td>
     )
   }
