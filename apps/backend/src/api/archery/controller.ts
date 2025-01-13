@@ -72,4 +72,60 @@ export const archeryController = {
       },
     ])
   },
+  getRanking: async (req: Request, res: Response) => {
+    res.json([
+      {
+        name: 'Б. Балданбаатар',
+        score1: 100,
+        score2: 101,
+        total: 201,
+        rank: 1,
+      },
+      {
+        name: 'Б. Балданбаатар',
+        score1: 100,
+        score2: 101,
+        total: 201,
+        rank: 2,
+      },
+      {
+        name: 'Б. Балданбаатар',
+        score1: 100,
+        score2: 101,
+        total: 201,
+        rank: 3,
+      },
+      {
+        name: 'Б. Балданбаатар',
+        score1: 100,
+        score2: 101,
+        total: 201,
+        rank: 4,
+      },
+      {
+        name: 'Б. Балданбаатар',
+        score1: 100,
+        score2: 101,
+        total: 201,
+        rank: 5,
+      },
+      {
+        name: 'Б. Балданбаатар',
+        score1: 100,
+        score2: 101,
+        total: 201,
+        rank: 6,
+      },
+      {
+        name: 'Б. Балданбаатар',
+        total: 45,
+        rank: 7,
+      },
+      {
+        name: 'Б. Балданбаатар',
+        total: 45,
+        rank: 8,
+      },
+    ])
+  },
 }
