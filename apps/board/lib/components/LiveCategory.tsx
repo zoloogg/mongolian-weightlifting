@@ -1,4 +1,4 @@
-import { getLifts, getLiftsQuery, getLiveParticipants } from "@/services/apiService"
+import { getLiftsQuery, getLiveParticipants } from "@/services/apiService"
 import { Category, Club, Lift, Participation } from "@/types"
 import { FC, useEffect, useState } from "react"
 import { BoardParticipant } from "./BoardParticipant"
@@ -12,6 +12,10 @@ export const LiveCategory: FC<Props> = ({ category, clubs }) => {
   const [lifts, setLifts] = useState<Lift[]>([])
   const [refresh, setRefresh] = useState(0)
 
+  const [totalRank, setTotalRank] = useState<Record<string, number>>({})
+  const [snatchesRank, setSnatchesRank] = useState<Record<string, number>>({})
+  const [cleanRank, setCleanRank] = useState<Record<string, number>>({})
+
   useEffect(() => {
     const group = category.isA ? 'A' : 'B'
 
@@ -21,15 +25,50 @@ export const LiveCategory: FC<Props> = ({ category, clubs }) => {
         console.log("B", lifts)
         setLifts(lifts)
       })
+
+      const total: Record<string, number> = {}
+      const snatches: Record<string, number> = {}
+      const clean: Record<string, number> = {}
+
+      for (const participant of participants) {
+        if (participant.snatch !== 0 && participant.snatch !== undefined && participant.snatch !== null) {
+          snatches[participant._id] = participant.snatch
+        }
+        if (participant.cleanAndJerk !== 0 && participant.cleanAndJerk !== undefined && participant.cleanAndJerk !== null) {
+          clean[participant._id] = participant.cleanAndJerk
+        }
+
+        if (snatches[participant._id] !== undefined && clean[participant._id] !== undefined) {
+          total[participant._id] = snatches[participant._id] + clean[participant._id]
+        }
+      }
+
+      const sortedTotal = Object.entries(total).sort((a, b) => b[1] - a[1]).reduce((acc: Record<string, number>, el, idx) => {
+        acc[el[0]] = idx + 1
+
+        return acc
+      }, {})
+      console.log('sortedTotal: ', sortedTotal);
+      const sortedSnatches = Object.entries(snatches).sort((a, b) => b[1] - a[1]).reduce((acc: Record<string, number>, el, idx) => {
+        acc[el[0]] = idx + 1
+
+        return acc
+      }, {})
+      const sortedClean = Object.entries(clean).sort((a, b) => b[1] - a[1]).reduce((acc: Record<string, number>, el, idx) => {
+        acc[el[0]] = idx + 1
+
+        return acc
+      }, {})
+
+      setTotalRank(sortedTotal)
+      setSnatchesRank(sortedSnatches)
+      setCleanRank(sortedClean)
     })
   }, [category, refresh])
-
-
 
   setTimeout(function () {
     setRefresh(refresh + 1)
   }, 3000);
-
 
   return (
     <div className="flex flex-col w-full">
@@ -67,7 +106,16 @@ export const LiveCategory: FC<Props> = ({ category, clubs }) => {
           <tbody>
             {
               participants.map((participant, idx) => (
-                <BoardParticipant key={participant._id} participation={participant} idx={idx + 1} allLifts={lifts} allClubs={clubs} />
+                <BoardParticipant
+                  totalRank={totalRank[participant._id]}
+                  snatchesRank={snatchesRank[participant._id]}
+                  cleanRank={cleanRank[participant._id]}
+                  key={participant._id}
+                  participation={participant}
+                  idx={idx + 1}
+                  allLifts={lifts}
+                  allClubs={clubs}
+                />
               ))
             }
           </tbody>

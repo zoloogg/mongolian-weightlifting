@@ -3,15 +3,20 @@ import { FC, useEffect, useState } from "react";
 import { Participation } from "@/types/participation";
 import { Athlete, Club, Lift } from "@/types";
 import { getAthlete, getClub, getLifts } from "@/services/apiService";
+import { romanize } from "@/utils";
 
 interface Props {
   idx: number
   participation: Participation
   allLifts?: Lift[]
   allClubs?: Club[]
+  totalRank?: number
+  snatchesRank?: number
+  cleanRank?: number
+
 }
 
-export const BoardParticipant: FC<Props> = ({ idx, participation, allLifts, allClubs }) => {
+export const BoardParticipant: FC<Props> = ({ idx, participation, allLifts, allClubs, totalRank, snatchesRank, cleanRank }) => {
   const [athlete, setAthlete] = useState<Athlete | null>(null)
   const [club, setClub] = useState<Club | null>(null)
   const [dob, setDob] = useState<string | null>(null)
@@ -81,6 +86,23 @@ export const BoardParticipant: FC<Props> = ({ idx, participation, allLifts, allC
     )
   }
 
+  const Ranking: FC<{ val: number }> = ({ val }) => {
+    const className = ['text-center font-bold']
+    if (val === 1) {
+      className.push('text-yellow-500')
+    }
+    if (val === 2) {
+      className.push('text-gray-500')
+    }
+    if (val === 3) {
+      className.push('text-[#CD7F32]')
+    }
+
+    return (
+      <span className={className.join(' ')}>{romanize(val)} </span>
+    )
+  }
+
   return (
     <tr className="divide-x divide-y">
       <td>{idx}</td>
@@ -94,7 +116,7 @@ export const BoardParticipant: FC<Props> = ({ idx, participation, allLifts, allC
         {participation.snatch}
       </td>
       <td className="text-center">
-        { }
+        {<Ranking val={snatchesRank ?? 0} />}
       </td>
       {
         lifts.slice(3, 6).map((lift) => <LiftBox lift={lift} />)
@@ -102,12 +124,15 @@ export const BoardParticipant: FC<Props> = ({ idx, participation, allLifts, allC
       <td className="text-center">
         {participation.cleanAndJerk}
       </td>
-      <td className="text-center"></td>
-
+      <td className="text-center">
+        {<Ranking val={cleanRank ?? 0} />}
+      </td>
       <td className="text-center">
         {participation.snatch !== undefined && participation.cleanAndJerk !== undefined ? participation.snatch + participation.cleanAndJerk : ''}
       </td>
-      <td></td>
+      <td className="text-center">
+        {<Ranking val={totalRank ?? 0} />}
+      </td>
     </tr>
   )
 }
