@@ -1,34 +1,11 @@
+import { Match } from '@/database/models/match'
 import { Ranking } from '../../database/models/ranking'
 import { Request, Response } from 'express'
 
 export const archeryController = {
   getMatch: async (req: Request, res: Response) => {
-    res.json([
-      {
-        category: 'U14 - Эрэгтэйчүүдийн ганцаарчилсан',
-        name: 'Б. Балданбаатар',
-        arrow1: 1,
-        arrow2: 2,
-        arrow3: 3,
-        arrow4: 4,
-        arrow5: 5,
-        arrow6: 6,
-        total: 100,
-        set: 1,
-      },
-      {
-        category: 'U14 - Эрэгтэйчүүдийн ганцаарчилсан',
-        name: 'Б. Бадамсэрэжид',
-        arrow1: 7,
-        arrow2: 8,
-        arrow3: 9,
-        arrow4: 10,
-        arrow5: 11,
-        arrow6: 12,
-        total: 200,
-        set: 2,
-      },
-    ])
+    const data = await Match.find({})
+    res.json(data)
   },
   getBracket: async (req: Request, res: Response) => {
     res.json([
@@ -126,5 +103,36 @@ export const archeryController = {
       }
     })
     res.json(r)
+  },
+  postMatch: async (req: Request, res: Response) => {
+    const { setIdx } = req.params
+    const {
+      category,
+      name,
+      arrow1,
+      arrow2,
+      arrow3,
+      arrow4,
+      arrow5,
+      arrow6,
+      setScore,
+    } = req.body
+
+    const match = await Match.updateOne(
+      { setIdx: Number(setIdx) },
+      {
+        setIdx: Number(setIdx),
+        name,
+        category,
+        arrow1,
+        arrow2,
+        arrow3,
+        arrow4,
+        arrow5,
+        arrow6,
+        setScore,
+      }
+    )
+    res.json(match)
   },
 }
