@@ -1,3 +1,4 @@
+import { IMatch } from '@/types'
 import { Match } from '../../database/models/match'
 import { Ranking } from '../../database/models/ranking'
 import { Request, Response } from 'express'
@@ -5,7 +6,21 @@ import { Request, Response } from 'express'
 export const archeryController = {
   getMatch: async (req: Request, res: Response) => {
     const data = await Match.find({})
-    res.json(data)
+
+    const d = data.map((item: IMatch) => {
+      return {
+        ...item,
+        total:
+          item.arrow1 +
+          item.arrow2 +
+          item.arrow3 +
+          item.arrow4 +
+          item.arrow5 +
+          item.arrow6,
+      }
+    })
+
+    res.json(d)
   },
   getBracket: async (req: Request, res: Response) => {
     res.json([
