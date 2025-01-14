@@ -107,16 +107,22 @@ export const archeryController = {
     ])
   },
   getRanking: async (req: Request, res: Response) => {
-    const ranking = await Ranking.find({ isActive: true })
+    const ranking = await Ranking.findOne({ isActive: true })
+    console.log('ranking: ', ranking)
 
-    const r = ranking.map((item, idx) => {
+    if (ranking === null) {
+      res.json([])
+      return
+    }
+
+    const r = ranking.data.map((item: any, idx: number) => {
       return {
         rank: idx + 1,
         name: item.name,
-        first: item.data.first,
-        second: item.data.second,
-        total: item.data.total,
-        category: item.data.category,
+        first: item.score1,
+        second: item.score2,
+        total: item.total,
+        category: item.category,
       }
     })
     res.json(r)
