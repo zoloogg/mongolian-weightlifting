@@ -3,7 +3,8 @@ import { Box } from "@mui/material"
 import axios from "axios"
 import { FC, useEffect, useState } from "react"
 
-const API_URL = 'http://localhost:4000/api/v1/archery'
+// const API_URL = 'http://localhost:4000/api/v1/archery'
+const API_URL = 'https://api.trends.mn/api/v1/archery'
 
 const Page: FC = () => {
   const [category, setCategory] = useState('')
