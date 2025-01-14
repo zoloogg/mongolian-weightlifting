@@ -5,7 +5,7 @@ import { Request, Response } from 'express'
 
 export const archeryController = {
   getMatch: async (req: Request, res: Response) => {
-    const data = await Match.find({})
+    const data = await Match.find({}).lean()
 
     const d = data.map((item: IMatch) => {
       return {
