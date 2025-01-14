@@ -1,4 +1,4 @@
-import { Match } from '@/database/models/match'
+import { Match } from '../../database/models/match'
 import { Ranking } from '../../database/models/ranking'
 import { Request, Response } from 'express'
 
