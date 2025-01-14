@@ -1,3 +1,4 @@
+import { Ranking } from '@/database/models/ranking'
 import { Request, Response } from 'express'
 
 export const archeryController = {
@@ -106,71 +107,18 @@ export const archeryController = {
     ])
   },
   getRanking: async (req: Request, res: Response) => {
-    res.json([
-      {
-        name: 'Бүдүүн Билгүүдэй',
-        category: 'U14 - Эрэгтэйчүүдийн ганцаарчилсан',
-        first: 1,
-        second: 2,
-        total: 3,
-        rank: 1,
-      },
-      {
-        name: 'BBBBBBBBBBBBBBBB',
-        category: 'U14 - Эрэгтэйчүүдийн ганцаарчилсан',
-        first: 4,
-        second: 5,
-        total: 6,
-        rank: 2,
-      },
-      {
-        name: 'CCCCCCCCCCCCCCCC',
-        category: 'U14 - Эрэгтэйчүүдийн ганцаарчилсан',
-        first: 7,
-        second: 8,
-        total: 9,
-        rank: 3,
-      },
-      {
-        name: 'EEEEEEEEEEEEEEEE',
-        category: 'U14 - Эрэгтэйчүүдийн ганцаарчилсан',
-        first: 10,
-        second: 11,
-        total: 12,
-        rank: 4,
-      },
-      {
-        name: 'FFFFFFFFFFFFFFFF',
-        category: 'U14 - Эрэгтэйчүүдийн ганцаарчилсан',
-        first: 13,
-        second: 14,
-        total: 15,
-        rank: 5,
-      },
-      {
-        name: 'GGGGGGGGGGGGGGGG',
-        category: 'U14 - Эрэгтэйчүүдийн ганцаарчилсан',
-        first: 16,
-        second: 17,
-        total: 18,
-        rank: 6,
-      },
-      {
-        name: 'HHHHHHHHHHHHHHHH',
-        category: 'U14 - Эрэгтэйчүүдийн ганцаарчилсан',
-        first: 19,
-        second: 20,
-        total: 21,
-        rank: 7,
-      },
-      {
-        name: 'IIIIIIIIIIIIIIII',
-        category: 'U14 - Эрэгтэйчүүдийн ганцаарчилсан',
-        first: 22,
-        second: 23,
-        total: 24,
-        rank: 8,
-      },
-    ])
+    const ranking = await Ranking.find({ isActive: true })
+
+    const r = ranking.map((item, idx) => {
+      return {
+        rank: idx + 1,
+        name: item.name,
+        first: item.data.first,
+        second: item.data.second,
+        total: item.data.total,
+        category: item.data.category,
+      }
+    })
+    res.json(r)
   },
 }
