@@ -1,4 +1,4 @@
-import { Ranking } from '@/database/models/ranking'
+import { Ranking } from '../../database/models/ranking'
 import { Request, Response } from 'express'
 
 export const archeryController = {
