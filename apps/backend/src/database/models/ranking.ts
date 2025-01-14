@@ -1,5 +1,5 @@
 import { model, Schema } from 'mongoose'
-import { IAthlete, IRanking } from '../../types/models'
+import { IRanking } from '../../types/models'
 
 const rankingSchema = new Schema<IRanking>(
   {

@@ -6,4 +6,4 @@ export interface IBaseRanking {
   data: any
 }
 
-export interface IRanking extends IBaseRanking, Document<ObjectId> { }
+export interface IRanking extends IBaseRanking, Document<ObjectId> {}
